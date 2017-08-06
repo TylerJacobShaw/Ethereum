@@ -209,16 +209,153 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\RateController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\RateType.cs" />
+    <Compile Include="Models\Stamp.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\Rate.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Service\FixerService.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\components\iron-ajax\demo\index.html" />
+    <Content Include="Content\components\iron-ajax\hero.svg" />
+    <Content Include="Content\components\iron-ajax\index.html" />
+    <Content Include="Content\components\iron-ajax\iron-ajax.html" />
+    <Content Include="Content\components\iron-ajax\iron-request.html" />
+    <Content Include="Content\components\iron-ajax\test\index.html" />
+    <Content Include="Content\components\iron-ajax\test\iron-ajax.html" />
+    <Content Include="Content\components\iron-ajax\test\iron-request.html" />
+    <Content Include="Content\components\polymer\externs\closure-types.js" />
+    <Content Include="Content\components\polymer\externs\polymer-closure-types.html" />
+    <Content Include="Content\components\polymer\externs\polymer-externs.js" />
+    <Content Include="Content\components\polymer\externs\webcomponents-externs.js" />
+    <Content Include="Content\components\polymer\img\migration.png" />
+    <Content Include="Content\components\polymer\index.html" />
+    <Content Include="Content\components\polymer\lib\elements\array-selector.html" />
+    <Content Include="Content\components\polymer\lib\elements\custom-style.html" />
+    <Content Include="Content\components\polymer\lib\elements\dom-bind.html" />
+    <Content Include="Content\components\polymer\lib\elements\dom-if.html" />
+    <Content Include="Content\components\polymer\lib\elements\dom-module.html" />
+    <Content Include="Content\components\polymer\lib\elements\dom-repeat.html" />
+    <Content Include="Content\components\polymer\lib\legacy\class.html" />
+    <Content Include="Content\components\polymer\lib\legacy\legacy-element-mixin.html" />
+    <Content Include="Content\components\polymer\lib\legacy\mutable-data-behavior.html" />
+    <Content Include="Content\components\polymer\lib\legacy\polymer-fn.html" />
+    <Content Include="Content\components\polymer\lib\legacy\polymer.dom.html" />
+    <Content Include="Content\components\polymer\lib\legacy\templatizer-behavior.html" />
+    <Content Include="Content\components\polymer\lib\mixins\element-mixin.html" />
+    <Content Include="Content\components\polymer\lib\mixins\gesture-event-listeners.html" />
+    <Content Include="Content\components\polymer\lib\mixins\mutable-data.html" />
+    <Content Include="Content\components\polymer\lib\mixins\property-accessors.html" />
+    <Content Include="Content\components\polymer\lib\mixins\property-effects.html" />
+    <Content Include="Content\components\polymer\lib\mixins\template-stamp.html" />
+    <Content Include="Content\components\polymer\lib\utils\array-splice.html" />
+    <Content Include="Content\components\polymer\lib\utils\async.html" />
+    <Content Include="Content\components\polymer\lib\utils\boot.html" />
+    <Content Include="Content\components\polymer\lib\utils\case-map.html" />
+    <Content Include="Content\components\polymer\lib\utils\debounce.html" />
+    <Content Include="Content\components\polymer\lib\utils\flattened-nodes-observer.html" />
+    <Content Include="Content\components\polymer\lib\utils\flush.html" />
+    <Content Include="Content\components\polymer\lib\utils\gestures.html" />
+    <Content Include="Content\components\polymer\lib\utils\import-href.html" />
+    <Content Include="Content\components\polymer\lib\utils\mixin.html" />
+    <Content Include="Content\components\polymer\lib\utils\path.html" />
+    <Content Include="Content\components\polymer\lib\utils\render-status.html" />
+    <Content Include="Content\components\polymer\lib\utils\resolve-url.html" />
+    <Content Include="Content\components\polymer\lib\utils\settings.html" />
+    <Content Include="Content\components\polymer\lib\utils\style-gather.html" />
+    <Content Include="Content\components\polymer\lib\utils\templatize.html" />
+    <Content Include="Content\components\polymer\lib\utils\unresolved.html" />
+    <Content Include="Content\components\polymer\LICENSE.txt" />
+    <Content Include="Content\components\polymer\polymer-element.html" />
+    <Content Include="Content\components\polymer\polymer.html" />
+    <Content Include="Content\components\shadycss\apply-shim.html" />
+    <Content Include="Content\components\shadycss\apply-shim.min.js" />
+    <Content Include="Content\components\shadycss\custom-style-interface.html" />
+    <Content Include="Content\components\shadycss\custom-style-interface.min.js" />
+    <Content Include="Content\components\shadycss\entrypoints\apply-shim.js" />
+    <Content Include="Content\components\shadycss\entrypoints\custom-style-interface.js" />
+    <Content Include="Content\components\shadycss\entrypoints\scoping-shim.js" />
+    <Content Include="Content\components\shadycss\examples\custom-style-element.js" />
+    <Content Include="Content\components\shadycss\examples\document-style-lib.js" />
+    <Content Include="Content\components\shadycss\externs\shadycss-externs.js" />
+    <Content Include="Content\components\shadycss\gulpfile.js" />
+    <Content Include="Content\components\shadycss\scoping-shim.min.js" />
+    <Content Include="Content\components\shadycss\src\apply-shim-utils.js" />
+    <Content Include="Content\components\shadycss\src\apply-shim.js" />
+    <Content Include="Content\components\shadycss\src\common-regex.js" />
+    <Content Include="Content\components\shadycss\src\common-utils.js" />
+    <Content Include="Content\components\shadycss\src\css-parse.js" />
+    <Content Include="Content\components\shadycss\src\custom-style-interface.js" />
+    <Content Include="Content\components\shadycss\src\document-wait.js" />
+    <Content Include="Content\components\shadycss\src\document-watcher.js" />
+    <Content Include="Content\components\shadycss\src\scoping-shim.js" />
+    <Content Include="Content\components\shadycss\src\style-cache.js" />
+    <Content Include="Content\components\shadycss\src\style-info.js" />
+    <Content Include="Content\components\shadycss\src\style-placeholder.js" />
+    <Content Include="Content\components\shadycss\src\style-properties.js" />
+    <Content Include="Content\components\shadycss\src\style-settings.js" />
+    <Content Include="Content\components\shadycss\src\style-transformer.js" />
+    <Content Include="Content\components\shadycss\src\style-util.js" />
+    <Content Include="Content\components\shadycss\src\template-map.js" />
+    <Content Include="Content\components\webcomponentsjs\custom-elements-es5-adapter.js" />
+    <Content Include="Content\components\webcomponentsjs\entrypoints\custom-elements-es5-adapter-index.js" />
+    <Content Include="Content\components\webcomponentsjs\entrypoints\webcomponents-hi-ce-index.js" />
+    <Content Include="Content\components\webcomponentsjs\entrypoints\webcomponents-hi-index.js" />
+    <Content Include="Content\components\webcomponentsjs\entrypoints\webcomponents-hi-sd-ce-index.js" />
+    <Content Include="Content\components\webcomponentsjs\entrypoints\webcomponents-hi-sd-ce-pf-index.js" />
+    <Content Include="Content\components\webcomponentsjs\entrypoints\webcomponents-sd-ce-index.js" />
+    <Content Include="Content\components\webcomponentsjs\externs\webcomponents.js" />
+    <Content Include="Content\components\webcomponentsjs\gulpfile.js" />
+    <Content Include="Content\components\webcomponentsjs\src\post-polyfill.js" />
+    <Content Include="Content\components\webcomponentsjs\src\pre-polyfill.js" />
+    <Content Include="Content\components\webcomponentsjs\src\unresolved.js" />
+    <Content Include="Content\components\webcomponentsjs\tests\ce-import-upgrade-async.html" />
+    <Content Include="Content\components\webcomponentsjs\tests\ce-import-upgrade.html" />
+    <Content Include="Content\components\webcomponentsjs\tests\ce-import.html" />
+    <Content Include="Content\components\webcomponentsjs\tests\ce-upgrade-order.html" />
+    <Content Include="Content\components\webcomponentsjs\tests\ce-upgradedocumenttree.html" />
+    <Content Include="Content\components\webcomponentsjs\tests\dev-loader-swizzled.html" />
+    <Content Include="Content\components\webcomponentsjs\tests\dev-loader.html" />
+    <Content Include="Content\components\webcomponentsjs\tests\force-polyfills.html" />
+    <Content Include="Content\components\webcomponentsjs\tests\imports\a1-define.html" />
+    <Content Include="Content\components\webcomponentsjs\tests\imports\a1-import.html" />
+    <Content Include="Content\components\webcomponentsjs\tests\imports\a1-instance.html" />
+    <Content Include="Content\components\webcomponentsjs\tests\imports\a1-reference.html" />
+    <Content Include="Content\components\webcomponentsjs\tests\imports\csp-import-1.html" />
+    <Content Include="Content\components\webcomponentsjs\tests\imports\csp-import-2.html" />
+    <Content Include="Content\components\webcomponentsjs\tests\imports\csp-script-1.js" />
+    <Content Include="Content\components\webcomponentsjs\tests\imports\csp-script-2.js" />
+    <Content Include="Content\components\webcomponentsjs\tests\imports\current-script.js" />
+    <Content Include="Content\components\webcomponentsjs\tests\imports\element-import-a.html" />
+    <Content Include="Content\components\webcomponentsjs\tests\imports\element-import-b.html" />
+    <Content Include="Content\components\webcomponentsjs\tests\imports\element-import.html" />
+    <Content Include="Content\components\webcomponentsjs\tests\imports\import-file.html" />
+    <Content Include="Content\components\webcomponentsjs\tests\imports\import-upgrade-order.html" />
+    <Content Include="Content\components\webcomponentsjs\tests\imports\script-1.html" />
+    <Content Include="Content\components\webcomponentsjs\tests\imports\script-2.html" />
+    <Content Include="Content\components\webcomponentsjs\tests\imports\simple-element-es5.html" />
+    <Content Include="Content\components\webcomponentsjs\tests\imports\simple-element.html" />
+    <Content Include="Content\components\webcomponentsjs\tests\integration-es5.html" />
+    <Content Include="Content\components\webcomponentsjs\tests\integration.html" />
+    <Content Include="Content\components\webcomponentsjs\tests\load.html" />
+    <Content Include="Content\components\webcomponentsjs\tests\runner.html" />
+    <Content Include="Content\components\webcomponentsjs\tests\smoke.html" />
+    <Content Include="Content\components\webcomponentsjs\tests\template-and-CE.html" />
+    <Content Include="Content\components\webcomponentsjs\tests\template-and-imports.html" />
+    <Content Include="Content\components\webcomponentsjs\webcomponents-hi-ce.js" />
+    <Content Include="Content\components\webcomponentsjs\webcomponents-hi-sd-ce.js" />
+    <Content Include="Content\components\webcomponentsjs\webcomponents-hi.js" />
+    <Content Include="Content\components\webcomponentsjs\webcomponents-lite.js" />
+    <Content Include="Content\components\webcomponentsjs\webcomponents-loader.js" />
+    <Content Include="Content\components\webcomponentsjs\webcomponents-sd-ce.js" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -228,6 +365,43 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Content\components\iron-ajax\.bower.json" />
+    <Content Include="Content\components\iron-ajax\.github\ISSUE_TEMPLATE.md" />
+    <Content Include="Content\components\iron-ajax\.gitignore" />
+    <Content Include="Content\components\iron-ajax\.travis.yml" />
+    <Content Include="Content\components\iron-ajax\bower.json" />
+    <Content Include="Content\components\iron-ajax\CONTRIBUTING.md" />
+    <Content Include="Content\components\iron-ajax\README.md" />
+    <Content Include="Content\components\polymer\.bower.json" />
+    <Content Include="Content\components\polymer\bower.json" />
+    <Content Include="Content\components\polymer\package.json" />
+    <Content Include="Content\components\polymer\README.md" />
+    <Content Include="Content\components\polymer\wct.conf.json" />
+    <Content Include="Content\components\shadycss\.bower.json" />
+    <Content Include="Content\components\shadycss\apply-shim.min.js.map" />
+    <Content Include="Content\components\shadycss\bower.json" />
+    <Content Include="Content\components\shadycss\custom-style-interface.min.js.map" />
+    <Content Include="Content\components\shadycss\package.json" />
+    <Content Include="Content\components\shadycss\README.md" />
+    <Content Include="Content\components\shadycss\scoping-shim.min.js.map" />
+    <Content Include="Content\components\shadycss\wct.conf.json" />
+    <Content Include="Content\components\webcomponentsjs\.bower.json" />
+    <Content Include="Content\components\webcomponentsjs\.eslintrc.json" />
+    <Content Include="Content\components\webcomponentsjs\.gitattributes" />
+    <Content Include="Content\components\webcomponentsjs\.gitignore" />
+    <Content Include="Content\components\webcomponentsjs\.travis.yml" />
+    <Content Include="Content\components\webcomponentsjs\bower.json" />
+    <Content Include="Content\components\webcomponentsjs\CONTRIBUTING.md" />
+    <Content Include="Content\components\webcomponentsjs\LICENSE.md" />
+    <Content Include="Content\components\webcomponentsjs\package.json" />
+    <Content Include="Content\components\webcomponentsjs\README.md" />
+    <Content Include="Content\components\webcomponentsjs\wct.conf.json" />
+    <Content Include="Content\components\webcomponentsjs\webcomponents-hi-ce.js.map" />
+    <Content Include="Content\components\webcomponentsjs\webcomponents-hi-sd-ce.js.map" />
+    <Content Include="Content\components\webcomponentsjs\webcomponents-hi.js.map" />
+    <Content Include="Content\components\webcomponentsjs\webcomponents-lite.js.map" />
+    <Content Include="Content\components\webcomponentsjs\webcomponents-sd-ce.js.map" />
+    <Content Include="Content\components\webcomponentsjs\yarn.lock" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -275,6 +449,7 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Service References\Application Insights\ConnectedService.json" />
+    <Content Include="Views\Rate\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -304,16 +479,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
-          <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>54845</DevelopmentServerPort>
-          <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://tshaw.ethereum.com</IISUrl>
-          <NTLMAuthentication>False</NTLMAuthentication>
-          <UseCustomServer>False</UseCustomServer>
-          <CustomServerUrl>
-          </CustomServerUrl>
-          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+          <SaveServerSettingsInUserFile>True</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>
     </VisualStudio>
