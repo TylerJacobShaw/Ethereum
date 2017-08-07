@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 
-namespace Ethereum.web.Controllers
+namespace Ethereum.Web.Controllers
 {
     public class RateController : Controller
     {

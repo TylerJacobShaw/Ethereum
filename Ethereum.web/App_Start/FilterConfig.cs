@@ -1,7 +1,7 @@
 ﻿using System.Web;
 using System.Web.Mvc;
 
-namespace Ethereum.web
+namespace Ethereum.Web
 {
     public class FilterConfig
     {

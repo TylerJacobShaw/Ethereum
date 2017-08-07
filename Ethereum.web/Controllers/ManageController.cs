@@ -8,7 +8,7 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using Ethereum.Web.Models;
 
-namespace Ethereum.web.Controllers
+namespace Ethereum.Web.Controllers
 {
     [Authorize]
     public class ManageController : Controller

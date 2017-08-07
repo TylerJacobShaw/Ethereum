@@ -12,7 +12,7 @@ using Microsoft.Owin;
 using Microsoft.Owin.Security;
 using Ethereum.Web.Models;
 
-namespace Ethereum.web
+namespace Ethereum.Web
 {
     public class EmailService : IIdentityMessageService
     {
