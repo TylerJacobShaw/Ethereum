@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace Ethereum.web.Models
+namespace Ethereum.Web.Models
 {
     public class ExternalLoginConfirmationViewModel
     {

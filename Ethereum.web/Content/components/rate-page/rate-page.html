@@ -1,0 +1,28 @@
+﻿<link rel="import" href="../polymer/polymer.html" />
+<link rel="import" href="../xenon-photo-card/xenon-photo-card.html" />
+<link rel="import" href="../iron-icon/iron-icon.html" />
+<link rel="import" href="../iron-ajax/iron-ajax.html" />
+<link rel="import" href="../iron-icons/iron-icons.html" />
+<dom-module id="rate-page">
+    <template>
+        <xenon-photo-card heading="Rates" style="min-height:600px;">
+            <main>
+                <rate-master rate="{{rates}}"></rate-master>
+            </main>
+        </xenon-photo-card>
+    </template>
+    <script>
+        Polymer({
+            is: 'rate-page',
+            properties: {
+                stamp: {type:Object, notify:true, value: {}, observer: "_onStampCheck"}
+            },
+            _onStampCheck: function () {
+                if (!window.stamp) {
+                    console.log("View page source stamp");
+                }
+                this.set("stamp", window.stamp);
+            }
+        });
+    </script>
+</dom-module>

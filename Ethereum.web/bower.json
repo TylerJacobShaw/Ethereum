@@ -1,0 +1,14 @@
+{
+  "name": "Ethereum.web",
+  "homepage": "https://github.com/TylerJacobShaw/Ethereum",
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

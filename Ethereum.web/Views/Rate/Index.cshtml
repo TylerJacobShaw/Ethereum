@@ -1,0 +1,67 @@
+﻿<script>
+    var url = "@ViewBag.BaseUrl";
+    var stamp = @Html.Raw(Json.Encode(ViewBag.Stamp));
+</script>
+<link rel="import" href="~/Content/components/polymer/polymer.html" />
+<link rel="import" href="~/Content/components/xenon-photo-card/xenon-photo-card.html" />
+<link rel="import" href="~/Content/components/iron-icon/iron-icon.html" />
+<link rel="import" href="~/Content/components/iron-ajax/iron-ajax.html" />
+<link rel="import" href="~/Content/components/iron-icons/iron-icons.html" />
+<link rel="import" href="~/Content/components/iron-icons/iron-icons.html" />
+<link rel="import" href="~/Content/components/iron-ajax/iron-ajax.html" />
+<link rel="import" href="~/Content/components/paper-card/paper-card.html" />
+<dom-module id="rate-page">
+    <template>
+        <iron-ajax id="ajax"
+                   content-type="application/json"
+                   method="POST"
+                   handle-as="json"
+                   on-response="_onItemCheck">
+        </iron-ajax>
+        <paper-card style="width:100%">
+            <div class="card-content">
+                <h4>Rates based off of USD</h4>
+                    <template is="dom-repeat" items="{{rates}}">
+                        <div>{{item.Key}} {{item.Value}}</div>
+                    </template>
+                </div>
+        </paper-card>
+    </template>
+    <script>
+        HTMLImports.whenReady(function () {
+            Polymer({
+                is: 'rate-page',
+                properties: {
+                    stamp: {type:Object, notify:true, observer: "_onStampCheck"},
+                    url:{type: String, notify:true},
+                    rates: { type:Array, notify:true, value: [] }
+                },
+                ready: function () {
+                    if(!window.stamp && !window.url) return;
+                    if (window.stamp && window.url) {
+                        this.url = window.url;
+                        this.stamp = window.stamp;
+                        return;
+                    }
+                },
+                _onStampCheck: function(stamp){
+                    this.$.ajax.url = this.url + "/Api/FixerApi/PostRates";
+                    if(this.stamp.Rates == null){
+                        var stamp = {
+                            Base: stamp.Base,
+                            Date: new Date(Date.UTC(2017, 08, 6)),
+                            Rates: []
+                        }
+                        this.$.ajax.body = stamp;
+                        this.$.ajax.generateRequest();
+                    }
+                },
+                _onItemCheck: function(e){
+                    this.set("rates", e.detail.response.Rates);
+                    console.log(this.rates);
+                },
+            });
+        });
+    </script>
+</dom-module>
+<rate-page></rate-page>
