@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace Ethereum.web.Controllers
+namespace Ethereum.Web.Controllers
 {
     public class HomeController : Controller
     {

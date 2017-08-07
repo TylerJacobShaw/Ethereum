@@ -1,8 +1,8 @@
 ﻿using Microsoft.Owin;
 using Owin;
 
-[assembly: OwinStartupAttribute(typeof(Ethereum.web.Startup))]
-namespace Ethereum.web
+[assembly: OwinStartupAttribute(typeof(Ethereum.Web.Startup))]
+namespace Ethereum.Web
 {
     public partial class Startup
     {

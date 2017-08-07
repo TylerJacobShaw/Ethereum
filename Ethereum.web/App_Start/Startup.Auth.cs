@@ -7,7 +7,7 @@ using Microsoft.Owin.Security.Google;
 using Owin;
 using Ethereum.Web.Models;
 
-namespace Ethereum.web
+namespace Ethereum.Web
 {
     public partial class Startup
     {
