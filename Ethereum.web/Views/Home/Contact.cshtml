@@ -1,17 +1,28 @@
-﻿@{
-    ViewBag.Title = "Contact";
-}
-<h2>@ViewBag.Title.</h2>
-<h3>@ViewBag.Message</h3>
-
-<address>
-    One Microsoft Way<br />
-    Redmond, WA 98052-6399<br />
-    <abbr title="Phone">P:</abbr>
-    425.555.0100
-</address>
-
-<address>
-    <strong>Support:</strong>   <a href="mailto:Support@example.com">Support@example.com</a><br />
-    <strong>Marketing:</strong> <a href="mailto:Marketing@example.com">Marketing@example.com</a>
-</address>
+﻿<link rel="import" href="~/Content/components/polymer/polymer.html" />
+<link rel="import" href="~/Content/components/xenon-photo-card/xenon-photo-card.html" />
+<link rel="import" href="~/Content/components/iron-icon/iron-icon.html" />
+<link rel="import" href="~/Content/components/iron-ajax/iron-ajax.html" />
+<link rel="import" href="~/Content/components/iron-icons/iron-icons.html" />
+<link rel="import" href="~/Content/components/iron-icons/iron-icons.html" />
+<link rel="import" href="~/Content/components/iron-ajax/iron-ajax.html" />
+<link rel="import" href="~/Content/components/paper-card/paper-card.html" />
+<dom-module id="contact-page">
+    <template>
+        <paper-card style="width:100%">
+            <div class="card-content">
+                <h4>Contact Page</h4>
+            </div>
+        </paper-card>
+    </template>
+    <script>
+        HTMLImports.whenReady(function () {
+            Polymer({
+                is: 'contact-page',
+                properties: {
+                   
+                },
+            });
+        });
+    </script>
+</dom-module>
+<contact-page></contact-page>

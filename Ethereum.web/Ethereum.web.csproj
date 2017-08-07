@@ -215,6 +215,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Conversion.cs" />
     <Compile Include="Models\RateSheet.cs" />
     <Compile Include="Models\RateType.cs" />
     <Compile Include="Models\Stamp.cs" />
@@ -222,7 +223,7 @@
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Rates.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Service\FixerService.cs" />
+    <Compile Include="Controllers\Api\FixerApiController.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -334,6 +335,13 @@
     <Content Include="Content\components\iron-icon\iron-icon.html" />
     <Content Include="Content\components\iron-icon\test\index.html" />
     <Content Include="Content\components\iron-icon\test\iron-icon.html" />
+    <Content Include="Content\components\iron-image\demo\index.html" />
+    <Content Include="Content\components\iron-image\demo\loading.png" />
+    <Content Include="Content\components\iron-image\demo\polymer.svg" />
+    <Content Include="Content\components\iron-image\index.html" />
+    <Content Include="Content\components\iron-image\iron-image.html" />
+    <Content Include="Content\components\iron-image\test\index.html" />
+    <Content Include="Content\components\iron-image\test\iron-image.html" />
     <Content Include="Content\components\iron-input\demo\cats-only.html" />
     <Content Include="Content\components\iron-input\demo\index.html" />
     <Content Include="Content\components\iron-input\hero.svg" />
@@ -497,6 +505,16 @@
     <Content Include="Content\components\paper-button\paper-button.html" />
     <Content Include="Content\components\paper-button\test\index.html" />
     <Content Include="Content\components\paper-button\test\paper-button.html" />
+    <Content Include="Content\components\paper-card\demo\cafe.png" />
+    <Content Include="Content\components\paper-card\demo\donuts.png" />
+    <Content Include="Content\components\paper-card\demo\house.png" />
+    <Content Include="Content\components\paper-card\demo\index.html" />
+    <Content Include="Content\components\paper-card\demo\travel.png" />
+    <Content Include="Content\components\paper-card\demo\trip.png" />
+    <Content Include="Content\components\paper-card\index.html" />
+    <Content Include="Content\components\paper-card\paper-card.html" />
+    <Content Include="Content\components\paper-card\test\basic.html" />
+    <Content Include="Content\components\paper-card\test\index.html" />
     <Content Include="Content\components\paper-icon-button\demo\index.html" />
     <Content Include="Content\components\paper-icon-button\index.html" />
     <Content Include="Content\components\paper-icon-button\paper-icon-button.html" />
@@ -972,6 +990,20 @@
     <Content Include="Content\components\iron-menu-behavior\bower.json" />
     <Content Include="Content\components\iron-menu-behavior\CONTRIBUTING.md" />
     <Content Include="Content\components\iron-menu-behavior\README.md" />
+    <Content Include="Content\components\iron-image\.bower.json" />
+    <Content Include="Content\components\iron-image\.github\ISSUE_TEMPLATE.md" />
+    <Content Include="Content\components\iron-image\.gitignore" />
+    <Content Include="Content\components\iron-image\.travis.yml" />
+    <Content Include="Content\components\iron-image\bower.json" />
+    <Content Include="Content\components\iron-image\CONTRIBUTING.md" />
+    <Content Include="Content\components\iron-image\README.md" />
+    <Content Include="Content\components\paper-card\.bower.json" />
+    <Content Include="Content\components\paper-card\.github\ISSUE_TEMPLATE.md" />
+    <Content Include="Content\components\paper-card\.gitignore" />
+    <Content Include="Content\components\paper-card\.travis.yml" />
+    <Content Include="Content\components\paper-card\bower.json" />
+    <Content Include="Content\components\paper-card\CONTRIBUTING.md" />
+    <Content Include="Content\components\paper-card\README.md" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />

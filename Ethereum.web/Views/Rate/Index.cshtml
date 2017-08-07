@@ -9,20 +9,23 @@
 <link rel="import" href="~/Content/components/iron-icons/iron-icons.html" />
 <link rel="import" href="~/Content/components/iron-icons/iron-icons.html" />
 <link rel="import" href="~/Content/components/iron-ajax/iron-ajax.html" />
+<link rel="import" href="~/Content/components/paper-card/paper-card.html" />
 <dom-module id="rate-page">
     <template>
         <iron-ajax id="ajax"
-                   method="GET"
+                   content-type="application/json"
+                   method="POST"
                    handle-as="json"
-                   last-response="{{newStamp}}">
+                   on-response="_onItemCheck">
         </iron-ajax>
-        <xenon-photo-card heading="Rates" style="min-height:600px;">
-            <main>
-                <template is="dom-repeat" items="{{newStamp.rates}}">
-                    <div>{{item}}</div>
-                </template>
-            </main>
-        </xenon-photo-card>
+        <paper-card style="width:100%">
+            <div class="card-content">
+                <h4>Rates based off of USD</h4>
+                    <template is="dom-repeat" items="{{rates}}">
+                        <div>{{item.Key}} {{item.Value}}</div>
+                    </template>
+                </div>
+        </paper-card>
     </template>
     <script>
         HTMLImports.whenReady(function () {
@@ -31,8 +34,7 @@
                 properties: {
                     stamp: {type:Object, notify:true, observer: "_onStampCheck"},
                     url:{type: String, notify:true},
-                    item: {type:Object, notify:true, observer: "_onItemCheck"}
-
+                    rates: { type:Array, notify:true, value: [] }
                 },
                 ready: function () {
                     if(!window.stamp && !window.url) return;
@@ -43,7 +45,7 @@
                     }
                 },
                 _onStampCheck: function(stamp){
-                    this.$.ajax.url = this.url + "/Rate/RateRequest";
+                    this.$.ajax.url = this.url + "/Api/FixerApi/PostRates";
                     if(this.stamp.Rates == null){
                         var stamp = {
                             Base: stamp.Base,
@@ -54,12 +56,10 @@
                         this.$.ajax.generateRequest();
                     }
                 },
-                _onItemCheck: function(data){
-                   data;
+                _onItemCheck: function(e){
+                    this.set("rates", e.detail.response.Rates);
+                    console.log(this.rates);
                 },
-                _onFooCheck: function(data){
-                    data;
-                }
             });
         });
     </script>
