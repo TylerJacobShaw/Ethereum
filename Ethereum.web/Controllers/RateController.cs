@@ -1,8 +1,10 @@
-﻿using Ethereum.web.Service;
-using Ethereum.Web.Models;
+﻿using Ethereum.Web.Models;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 
@@ -15,12 +17,15 @@ namespace Ethereum.web.Controllers
         {
             Stamp stamp = new Stamp();
             ViewBag.Stamp = stamp;
+            ViewBag.BaseUrl = ConfigurationManager.AppSettings["BaseUrl"];
             return View();
         }
-        public Stamp RateRequest(Stamp stamp)
+     [HttpGet]
+          public static Stamp RateRequest(Stamp stamp)
         {
             FixerService service = new FixerService();
-            service.GetRates(stamp.Base);
+            var response = service.GetRates(stamp.Base);
+            stamp.Rates = response.Rates;
             return stamp;
         }
     }

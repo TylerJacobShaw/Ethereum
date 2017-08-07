@@ -1,22 +1,28 @@
 ﻿using Ethereum.Web.Models;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Web.Http;
 
-namespace Ethereum.web.Service
+namespace Ethereum.Web.Models
 {
     public class FixerService : ApiController
     {
         [HttpGet]
-        public string GetRates(string key)
+        public RateSheet GetRates(string key)
         {
-            var request = WebRequest.Create("http://api.fixer.io/latest?base=" + key);
-            request.Method = "GET";
-            var response = request.GetResponse();
-            return "";
+            WebClient client = new WebClient();
+            var url = "http://api.fixer.io/latest?base=" + key;
+            // Add an Accept header for JSON format.
+            client.Headers.Set("Content-Type", "application/json");
+            // List data response.
+            var response = client.DownloadString(url);
+            var fixerStamp = JsonConvert.DeserializeObject<RateSheet>(response);
+            return fixerStamp;
         }
     }
 }

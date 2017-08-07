@@ -1,7 +1,67 @@
-﻿
-@{
-    ViewBag.Title = "Index";
-}
+﻿<script>
+    var url = "@ViewBag.BaseUrl";
+    var stamp = @Html.Raw(Json.Encode(ViewBag.Stamp));
+</script>
+<link rel="import" href="~/Content/components/polymer/polymer.html" />
+<link rel="import" href="~/Content/components/xenon-photo-card/xenon-photo-card.html" />
+<link rel="import" href="~/Content/components/iron-icon/iron-icon.html" />
+<link rel="import" href="~/Content/components/iron-ajax/iron-ajax.html" />
+<link rel="import" href="~/Content/components/iron-icons/iron-icons.html" />
+<link rel="import" href="~/Content/components/iron-icons/iron-icons.html" />
+<link rel="import" href="~/Content/components/iron-ajax/iron-ajax.html" />
+<dom-module id="rate-page">
+    <template>
+        <iron-ajax id="ajax"
+                   method="GET"
+                   handle-as="json"
+                   last-response="{{newStamp}}">
+        </iron-ajax>
+        <xenon-photo-card heading="Rates" style="min-height:600px;">
+            <main>
+                <template is="dom-repeat" items="{{newStamp.rates}}">
+                    <div>{{item}}</div>
+                </template>
+            </main>
+        </xenon-photo-card>
+    </template>
+    <script>
+        HTMLImports.whenReady(function () {
+            Polymer({
+                is: 'rate-page',
+                properties: {
+                    stamp: {type:Object, notify:true, observer: "_onStampCheck"},
+                    url:{type: String, notify:true},
+                    item: {type:Object, notify:true, observer: "_onItemCheck"}
 
-<h2>Index</h2>
-
+                },
+                ready: function () {
+                    if(!window.stamp && !window.url) return;
+                    if (window.stamp && window.url) {
+                        this.url = window.url;
+                        this.stamp = window.stamp;
+                        return;
+                    }
+                },
+                _onStampCheck: function(stamp){
+                    this.$.ajax.url = this.url + "/Rate/RateRequest";
+                    if(this.stamp.Rates == null){
+                        var stamp = {
+                            Base: stamp.Base,
+                            Date: new Date(Date.UTC(2017, 08, 6)),
+                            Rates: []
+                        }
+                        this.$.ajax.body = stamp;
+                        this.$.ajax.generateRequest();
+                    }
+                },
+                _onItemCheck: function(data){
+                   data;
+                },
+                _onFooCheck: function(data){
+                    data;
+                }
+            });
+        });
+    </script>
+</dom-module>
+<rate-page></rate-page>

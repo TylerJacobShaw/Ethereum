@@ -1,0 +1,14 @@
+{
+  "name": "xenon-layout",
+  "homepage": "https://github.com/acaxlabs/xenon-layout",
+  "_release": "ebc87f73eb",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "ebc87f73eba9dcae17645494741d9345f8911809"
+  },
+  "_source": "https://github.com/acaxlabs/xenon-layout.git",
+  "_target": "*",
+  "_originalSource": "https://github.com/acaxlabs/xenon-layout.git",
+  "_direct": true
+}

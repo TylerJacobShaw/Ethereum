@@ -10,7 +10,7 @@ namespace Ethereum.Web.Models
     {
         public string Base { get; set; }
         public DateTime Date { get; set; }
-        public Rates Rates { get; set; }
+        public Dictionary<string, double> Rates { get; set; }
         public Stamp()
         {
             Base = "USD";

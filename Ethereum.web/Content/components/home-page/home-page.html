@@ -1,0 +1,22 @@
+﻿<link rel="import" href="../polymer/polymer.html" />
+<link rel="import" href="../xenon-photo-card/xenon-photo-card.html" />
+<link rel="import" href="../iron-icon/iron-icon.html" />
+<link rel="import" href="../iron-ajax/iron-ajax.html" />
+<link rel="import" href="../iron-icons/iron-icons.html" />
+<dom-module id="home-page">
+    <template>
+        <xenon-photo-card heading="Ethereum Project" style="min-height:600px;">
+            <actions>
+                <iron-icon onclick="window.location = '/contacts/create'" icon="add"></iron-icon>
+            </actions>
+            <main>
+               
+            </main>
+        </xenon-photo-card>
+    </template>
+    <script>
+        Polymer({
+            is: 'home-page'
+        });
+    </script>
+</dom-module>
